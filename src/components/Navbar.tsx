@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { cn } from '../lib/utils';
 
+import { motion } from 'motion/react';
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,7 +31,10 @@ export function Navbar() {
   ];
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent',
         isScrolled
@@ -136,6 +141,6 @@ export function Navbar() {
           </Link>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
